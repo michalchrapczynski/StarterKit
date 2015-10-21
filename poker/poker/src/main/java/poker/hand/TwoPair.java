@@ -16,11 +16,11 @@ public class TwoPair extends Hand {
 
 	}
 
-
 	@Override
 	public int compareSameType(Hand toCompare) {
 		TwoPair handToCompare = (TwoPair) toCompare;
-		return valueOfFirstPair.compare(handToCompare.valueOfFirstPair) + valueOfSecondPair.compare(handToCompare.valueOfSecondPair)
+		return valueOfFirstPair.compare(handToCompare.valueOfFirstPair)
+				+ valueOfSecondPair.compare(handToCompare.valueOfSecondPair)
 				+ highCardBetweenSecondPair.compare(handToCompare.highCardBetweenSecondPair);
 	}
 }

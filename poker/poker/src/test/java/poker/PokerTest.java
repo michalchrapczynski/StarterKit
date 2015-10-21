@@ -1,7 +1,5 @@
 package poker;
 
-import static org.junit.Assert.assertThat;
-
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
@@ -10,17 +8,14 @@ import poker.hand.Flush;
 import poker.hand.FourOfAKind;
 import poker.hand.Full;
 import poker.hand.Hand;
-import poker.hand.HandType;
 import poker.hand.HighCard;
 import poker.hand.Pair;
 import poker.hand.Straight;
+import poker.hand.StraightFlush;
 import poker.hand.ThreeOfAKind;
 import poker.hand.TwoPair;
-import poker.hand.StraightFlush;
 
-@SuppressWarnings("unused")
 public class PokerTest {
-
 	private HandParser testClass = new HandParser();
 
 	@Test
@@ -36,7 +31,6 @@ public class PokerTest {
 		Assertions.assertThat(actual).isInstanceOf(HighCard.class);
 		Assertions.assertThat(actual.compare(expected)).isEqualTo(0);
 	}
-
 
 	@Test
 	public void pairAreAce() {
@@ -55,8 +49,8 @@ public class PokerTest {
 	@Test
 	public void pairAreAc2e() {
 		// given
-		String info = "AS AH 2C 2H 4C";
-		TwoPair expected = new TwoPair(CardValue.ACE, CardValue.TWO, CardValue.FOUR);
+		String info = "3S 2C 2H 3C 4H";
+		TwoPair expected = new TwoPair(CardValue.THREE, CardValue.TWO, CardValue.FOUR);
 
 		// when
 		Hand actual = testClass.parse(info);
@@ -83,7 +77,7 @@ public class PokerTest {
 	@Test
 	public void straight() {
 		// given
-		String info = "5S 7H 9C 8H 6C";
+		String info = "7H 9C 5S 8H 6C";
 		Straight expected = new Straight(CardValue.NINE);
 
 		// when
@@ -177,6 +171,5 @@ public class PokerTest {
 		Assertions.assertThat(actual).isInstanceOf(StraightFlush.class);
 		Assertions.assertThat(actual.compare(expected)).isEqualTo(0);
 	}
-
 
 }

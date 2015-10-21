@@ -45,18 +45,17 @@ public class HandParser {
 		CardValue threeOfAKind = getSet(cards, 3);
 		CardValue fourOfAKind = getSet(cards, 4);
 		boolean straight = isStraight(cards);
-		boolean straightWithAce = isStraightWithAce(cards);
 		boolean flush = isFlush(cards);
 
 		if (flush && straight) {
 			hand = new StraightFlush(highestCard);
-		} else if (flush && straightWithAce) {
+		} else if (flush && straight) {
 			hand = new StraightFlush(CardValue.FIVE);
 		} else if (flush) {
 			hand = new Flush(highestCard);
 		} else if (straight) {
 			hand = new Straight(highestCard);
-		} else if (straightWithAce) {
+		} else if (straight) {
 			hand = new Straight(CardValue.FIVE);
 		} else if (is(fourOfAKind)) {
 			hand = new FourOfAKind(fourOfAKind);
@@ -150,25 +149,6 @@ public class HandParser {
 			if (expectedtStraight == 5) {
 				return true;
 			}
-		}
-		return false;
-	}
-
-	private boolean isStraightWithAce(List<Card> cards) {
-		int expectedtStraight = 1;
-		List<CardValue> listCardsWithAce = new ArrayList<CardValue>();
-		for (int i = 0; i < cards.size(); i++) {
-			CardValue card = cards.get(i).value;
-			listCardsWithAce.add(card);
-			for (int j = 1; j < cards.size(); j++) {
-				if ((card.getValue() + 1) == cards.get(j).value.getValue()) {
-					expectedtStraight++;
-				}
-			}
-			if (expectedtStraight == 4 && listCardsWithAce.contains(CardValue.ACE) && listCardsWithAce.contains(CardValue.FIVE)) {
-				return true;
-			}
-
 		}
 		return false;
 	}

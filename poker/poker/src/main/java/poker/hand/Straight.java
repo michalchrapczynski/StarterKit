@@ -11,7 +11,6 @@ public class Straight extends Hand {
 		this.highCardStraight = highCardStraight;
 	}
 
-
 	@Override
 	public int compareSameType(Hand toCompare) {
 		Straight handToCompare = (Straight) toCompare;

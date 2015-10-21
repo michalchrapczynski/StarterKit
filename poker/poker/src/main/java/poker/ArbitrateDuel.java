@@ -10,12 +10,10 @@ public class ArbitrateDuel {
 		String a = cardsPlayers.substring(0, cardsPlayers.length() / 2);
 		String b = cardsPlayers.substring((cardsPlayers.length() / 2) + 1);
 
-
 		arbitrate(a, b);
 	}
 
 	public int arbitrate(String prayerA, String playerB) {
-
 		Hand handPlayerA = parser.parse(prayerA);
 		Hand handPlayerB = parser.parse(playerB);
 
@@ -24,8 +22,6 @@ public class ArbitrateDuel {
 		int remis = 0;
 
 		int score = handPlayerA.compare(handPlayerB);
-
-
 
 		switch (score) {
 		case 1:

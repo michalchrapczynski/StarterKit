@@ -16,7 +16,8 @@ public class Full extends Hand {
 	@Override
 	public int compareSameType(Hand toCompare) {
 		Full handToCompare = (Full) toCompare;
-		return valueOfThreeSome.compare(handToCompare.valueOfThreeSome) + valueOfPair.compare(handToCompare.valueOfPair);
+		return valueOfThreeSome.compare(handToCompare.valueOfThreeSome)
+				+ valueOfPair.compare(handToCompare.valueOfPair);
 	}
 
 }

@@ -1,7 +1,5 @@
 package poker.hand;
 
-
-
 import poker.card.CardValue;
 
 public class HighCard extends Hand {

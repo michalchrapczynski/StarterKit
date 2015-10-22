@@ -7,7 +7,7 @@ public class Flush extends Hand {
 	public CardValue highCardFlush;
 
 	public Flush(CardValue highCardFlush) {
-		super(HandType.HIGHCARD);
+		super(HandType.FLUSH);
 		this.highCardFlush = highCardFlush;
 	}
 

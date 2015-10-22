@@ -1,7 +1,11 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale.Category;
 
 import poker.card.Card;
 import poker.card.CardValue;
@@ -49,14 +53,10 @@ public class HandParser {
 
 		if (flush && straight) {
 			hand = new StraightFlush(highestCard);
-		} else if (flush && straight) {
-			hand = new StraightFlush(CardValue.FIVE);
 		} else if (flush) {
 			hand = new Flush(highestCard);
 		} else if (straight) {
 			hand = new Straight(highestCard);
-		} else if (straight) {
-			hand = new Straight(CardValue.FIVE);
 		} else if (is(fourOfAKind)) {
 			hand = new FourOfAKind(fourOfAKind);
 		} else if (is(pair) && is(threeOfAKind)) {
@@ -138,24 +138,23 @@ public class HandParser {
 
 	private boolean isStraight(List<Card> cards) {
 		int expectedtStraight = 1;
-		for (int i = 0; i < cards.size(); i++) {
-			CardValue card = cards.get(i).value;
-			for (int j = 1; j < cards.size(); j++) {
-				if ((card.getValue() + 1) == cards.get(j).value.getValue()) {
-					expectedtStraight++;
-				}
-			}
+		Collections.sort(cards, new Comparator());
 
-			if (expectedtStraight == 5) {
-				return true;
+		for (int j = 0; j < cards.size() - 1; j++) {
+			if (cards.get(j).value.getValue() + 1 == cards.get(j + 1).value.getValue()) {
+				expectedtStraight++;
 			}
 		}
+
+		if (expectedtStraight == 5) {
+			return true;
+		}
+
 		return false;
 	}
 
 	private boolean isFlush(List<Card> cards) {
 		int expectedMore = 1;
-
 		String card = cards.get(0).color;
 
 		for (int j = 1; j < cards.size(); j++) {
@@ -163,11 +162,9 @@ public class HandParser {
 				expectedMore++;
 			}
 		}
-
 		if (expectedMore == 5) {
 			return true;
 		}
-
 		return false;
 	}
 }

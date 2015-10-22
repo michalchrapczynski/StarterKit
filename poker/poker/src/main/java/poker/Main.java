@@ -7,21 +7,36 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		ArbitrateDuel duel = new ArbitrateDuel();
 
+		int winPlayerA = 0;
+		int winPlayerB = 0;
+		int remis = 0;
+
+		ArbitrateDuel duel = new ArbitrateDuel();
 		FileReader fileReader = new FileReader("src/poker.txt");
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
-
 		String textLine = bufferedReader.readLine();
 		do {
-			System.out.println(textLine);
 
-			duel.getCard(textLine);
+			int actualResult = duel.getCard(textLine);
+
+			if (actualResult == 1) {
+				winPlayerA++;
+			} else if (actualResult == 2) {
+				winPlayerB++;
+			} else {
+				remis++;
+			}
 
 			textLine = bufferedReader.readLine();
 		} while (textLine != null);
 
 		bufferedReader.close();
+
+		System.out.println("Gracz piewszy wygral : " + winPlayerA + " razy");
+		System.out.println("Gracz drugi wygral : " + winPlayerB + " razy");
+		System.out.println("Liczba remisow to : " + remis);
+		System.out.println();
 
 	}
 

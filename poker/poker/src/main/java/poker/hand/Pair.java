@@ -16,8 +16,7 @@ public class Pair extends Hand {
 	@Override
 	public int compareSameType(Hand toCompare) {
 		Pair handToCompare = (Pair) toCompare;
-		return valueOfPair.compare(handToCompare.valueOfPair) == 0
-				? +highCardNextToPair.compare(handToCompare.highCardNextToPair)
+		return valueOfPair.compare(handToCompare.valueOfPair) == 0 ? highCardNextToPair.compare(handToCompare.highCardNextToPair)
 				: valueOfPair.compare(handToCompare.valueOfPair);
 	}
 

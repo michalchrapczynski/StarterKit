@@ -7,7 +7,7 @@ public class StraightFlush extends Hand {
 	public CardValue highCardstrightFlush;
 
 	public StraightFlush(CardValue highCardstrightFlush) {
-		super(HandType.HIGHCARD);
+		super(HandType.STRAIGHTFLUSH);
 		this.highCardstrightFlush = highCardstrightFlush;
 	}
 

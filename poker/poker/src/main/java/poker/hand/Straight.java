@@ -7,7 +7,7 @@ public class Straight extends Hand {
 	public CardValue highCardStraight;
 
 	public Straight(CardValue highCardStraight) {
-		super(HandType.HIGHCARD);
+		super(HandType.STRAIGHT);
 		this.highCardStraight = highCardStraight;
 	}
 

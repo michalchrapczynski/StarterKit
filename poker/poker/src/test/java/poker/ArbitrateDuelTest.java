@@ -146,7 +146,7 @@ public class ArbitrateDuelTest {
 	@Test
 	public void test7_wrong() {
 		// given
-		String playerA = "8S 5D 8H 4C 6HC";
+		String playerA = "8S 5D 8H 4C 6H";
 		String playerB = "KC 3H 7C 5S KD";
 		int expected = -1;
 		// when
@@ -155,4 +155,15 @@ public class ArbitrateDuelTest {
 		Assertions.assertThat(actual).isLessThanOrEqualTo(expected);
 	}
 
+	@Test
+	public void test8_wrong() {
+		// given
+		String playerA = "6H 4H 5C 3H 2H";
+		String playerB = "3S QH 5S 6S AS";
+		int expected = 1;
+		// when
+		int actual = battle.arbitrate(playerA, playerB);
+		// then
+		Assertions.assertThat(actual).isLessThanOrEqualTo(expected);
+	}
 }

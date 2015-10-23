@@ -18,10 +18,9 @@ public class ArbitrateDuel {
 		Hand handPlayerB = parser.parse(playerB);
 
 		int result = 0;
-
-		// int winA = 0;
-		// int winB = 0;
-		// int remis = 0;
+		/*
+		 * int winA = 0; int winB = 0; int remis = 0;
+		 */
 
 		int score = handPlayerA.compare(handPlayerB);
 
@@ -38,10 +37,10 @@ public class ArbitrateDuel {
 		return result;
 
 		/*
-		 * System.out.println("Gracz piewszy wygral : " + winA +
-		 * " razy z układem: " + handPlayerA.getType()); System.out.println(
-		 * "Gracz drugi wygral : " + winB + " razy"); System.out.println(
-		 * "Liczba remisow to : " + remis); System.out.println();
+		 * System.out.println("Gracz piewszy wygral : " + winA + " razy");
+		 * System.out.println("Gracz drugi wygral : " + winB + " razy");
+		 * System.out.println("Liczba remisow to : " + remis);
+		 * System.out.println();
 		 */
 	}
 

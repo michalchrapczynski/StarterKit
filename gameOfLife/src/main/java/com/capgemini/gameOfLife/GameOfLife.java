@@ -45,15 +45,14 @@ public class GameOfLife {
 						int numbersNeighbors = 0;
 						testAddSpaceGame.add(tempPoint);
 
-						for (Point point2 : testAddSpaceGame) {
-							if (!tempPoint.equals(point2)) {
-								int xNeighbor = point2.getX();
-								int yNeighbor = point2.getY();
-								numbersNeighbors += LookForNeighbor(i, j, xNeighbor, yNeighbor);
+						for (Point neighbour : testAddSpaceGame) {
+							if (!tempPoint.equals(neighbour)) {
+								numbersNeighbors += LookForNeighbor(tempPoint, neighbour);
 							}
 
 						}
 						if (numbersNeighbors > 2) {
+
 							endSpaceGame.add(tempPoint);
 						} else {
 							containerChekedPoint.add(tempPoint);
@@ -64,10 +63,9 @@ public class GameOfLife {
 				}
 
 			}
-			
+
 		}
 	}
-
 
 	private boolean checkAddElement(Set<Point> startSpaceGame, Set<Point> endSpaceGame, Point actualPoint) {
 		boolean equalNotExistPointStartSpaceGame = checkExistElementInSpaces(startSpaceGame, actualPoint);
@@ -75,7 +73,6 @@ public class GameOfLife {
 
 		return equalNotExistPointStartSpaceGame && equalNotExistPointEndSpaceGame;
 	}
-
 
 	private boolean checkExistElementInSpaces(Set<Point> startSpaceGame, Point actualPoint) {
 		boolean contains = true;
@@ -89,28 +86,30 @@ public class GameOfLife {
 	}
 
 	private void removePoint(Set<Point> startSpaceGame, Set<Point> endSpaceGame) {
-		for (Point point : startSpaceGame) {
-			int xOwner = point.getX();
-			int yOwner = point.getY();
+		for (Point owner : startSpaceGame) {
 			int numbersNeighbors = 0;
 
-			for (Point point2 : startSpaceGame) {
-				if (!point.equals(point2)) {
-					int xNeighbor = point2.getX();
-					int yNeighbor = point2.getY();
+			for (Point neighbour : startSpaceGame) {
+				if (!owner.equals(neighbour)) {
 
-					numbersNeighbors += LookForNeighbor(xOwner, yOwner, xNeighbor, yNeighbor);
+					numbersNeighbors += LookForNeighbor(owner, neighbour);
 				}
 			}
 
 			if (numbersNeighbors < 2 || numbersNeighbors > 3) {
-				endSpaceGame.remove(point);
+				endSpaceGame.remove(owner);
 			}
 		}
 	}
 
-	private int LookForNeighbor(int xOwner, int yOwner, int xNeighbor, int yNeighbor) {
+	private int LookForNeighbor(Point owner, Point neighbour) {
 		int numbersNeighbors = 0;
+
+		int xOwner = owner.getX();
+		int yOwner = owner.getY();
+		int xNeighbor = neighbour.getX();
+		int yNeighbor = neighbour.getY();
+
 		if (((yOwner - 1 == yNeighbor) || (yOwner + 1 == yNeighbor) || (yOwner == yNeighbor))
 				&& ((xOwner - 1 == xNeighbor) || (xOwner + 1 == xNeighbor) || (xOwner == xNeighbor))) {
 			numbersNeighbors++;

@@ -20,7 +20,6 @@ public class TwoPair extends Hand {
 	public int compareSameType(Hand toCompare) {
 		TwoPair handToCompare = (TwoPair) toCompare;
 
-		return valueOfFirstPair.compare(handToCompare.valueOfFirstPair) == 0 ? (valueOfSecondPair.compare(handToCompare.valueOfSecondPair) == 0
 		if (valueOfFirstPair.compare(handToCompare.valueOfFirstPair) == 0) {
 			if (valueOfSecondPair.compare(handToCompare.valueOfSecondPair) == 0) {
 				return highCardBetweenSecondPair.compare(handToCompare.highCardBetweenSecondPair);

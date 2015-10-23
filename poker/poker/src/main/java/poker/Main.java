@@ -33,11 +33,15 @@ public class Main {
 
 		bufferedReader.close();
 
+		printScore(winPlayerA, winPlayerB, remis);
+
+	}
+
+	private static void printScore(int winPlayerA, int winPlayerB, int remis) {
 		System.out.println("Gracz piewszy wygral : " + winPlayerA + " razy");
 		System.out.println("Gracz drugi wygral : " + winPlayerB + " razy");
 		System.out.println("Liczba remisow to : " + remis);
 		System.out.println();
-
 	}
 
 }

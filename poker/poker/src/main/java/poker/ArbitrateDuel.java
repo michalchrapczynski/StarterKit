@@ -1,5 +1,7 @@
 package poker;
 
+import java.awt.HeadlessException;
+
 import poker.hand.Hand;
 
 public class ArbitrateDuel {

@@ -57,15 +57,15 @@ public class HandParser {
 			hand = new Flush(highestCard);
 		} else if (straight) {
 			hand = new Straight(highestCard);
-		} else if (is(fourOfAKind)) {
+		} else if (isNotNull(fourOfAKind)) {
 			hand = new FourOfAKind(fourOfAKind);
-		} else if (is(pair) && is(threeOfAKind)) {
+		} else if (isNotNull(pair) && isNotNull(threeOfAKind)) {
 			hand = new Full(threeOfAKind, pair);
-		} else if (is(threeOfAKind)) {
+		} else if (isNotNull(threeOfAKind)) {
 			hand = new ThreeOfAKind(threeOfAKind);
-		} else if (is(secondPair)) {
+		} else if (isNotNull(secondPair)) {
 			hand = new TwoPair(pair, secondPair, getHighestCardIfIstPairOrTwoPairs(cards, pair, secondPair));
-		} else if (is(pair)) {
+		} else if (isNotNull(pair)) {
 			hand = new Pair(pair, getHighestCardIfIstPairOrTwoPairs(cards, pair, CardValue.UNDEFINED));
 		} else {
 			hand = new HighCard(highestCard);
@@ -74,7 +74,7 @@ public class HandParser {
 		return hand;
 	}
 
-	public boolean is(CardValue c) {
+	public boolean isNotNull(CardValue c) {
 		return c != null;
 	}
 
@@ -114,6 +114,8 @@ public class HandParser {
 	}
 
 	private CardValue getExactNumberOfCards(List<Card> cards, int expectedNumber, CardValue otherThan) {
+
+		// hashmap
 		List<CardValue> excludeList = new ArrayList<CardValue>();
 		excludeList.add(otherThan);
 
@@ -133,11 +135,12 @@ public class HandParser {
 			}
 			excludeList.add(card);
 		}
-		return null;
+		return CardValue.UNDEFINED;
 	}
 
 	private boolean isStraight(List<Card> cards) {
 		int expectedtStraight = 1;
+		// nazwe klasy Comparator
 		Collections.sort(cards, new Comparator());
 
 		for (int j = 0; j < cards.size() - 1; j++) {

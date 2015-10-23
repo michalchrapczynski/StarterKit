@@ -115,7 +115,6 @@ public class HandParser {
 
 	private CardValue getExactNumberOfCards(List<Card> cards, int expectedNumber, CardValue otherThan) {
 
-		// hashmap
 		List<CardValue> excludeList = new ArrayList<CardValue>();
 		excludeList.add(otherThan);
 
@@ -135,13 +134,12 @@ public class HandParser {
 			}
 			excludeList.add(card);
 		}
-		return CardValue.UNDEFINED;
+		return null;
 	}
 
 	private boolean isStraight(List<Card> cards) {
 		int expectedtStraight = 1;
-		// nazwe klasy Comparator
-		Collections.sort(cards, new Comparator());
+		Collections.sort(cards, new ComparatorForStraight());
 
 		for (int j = 0; j < cards.size() - 1; j++) {
 			if (cards.get(j).value.getValue() + 1 == cards.get(j + 1).value.getValue()) {
